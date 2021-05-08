@@ -1,0 +1,51 @@
+nav {
+    .cart-logo {
+        width: 54px;
+        height: 54px;
+        &:hover {
+            border-bottom: 2px solid;
+        }
+    }
+
+    .cart-number {
+        background: red;
+        color: white;
+        font-size: 1rem;
+        width: fit-content;
+        border-radius: 50px;
+        height: 26px;
+        display: flex;
+        padding: 9px 7px;
+        align-items: center;
+        position: relative;
+        bottom: 63px;
+        left: 40px;
+        font-weight: 700;
+    }
+}
+
+.inline {
+    display: inline-block;
+}
+.cart-img {
+    height: 8em;
+}
+
+.card-text {
+    font-size: 0.8em;
+}
+
+.title,
+.price {
+    font-size: 0.8em;
+}
+
+.card-deck {
+    .cards-body {
+        height: 6em;
+    }
+}
+
+.Address-form {
+    font-size: 0.8em;
+}
