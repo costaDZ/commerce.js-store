@@ -11,6 +11,7 @@ import { commerce } from '../lib/Commerce';
 export const Checkout = ({ cart }) => {
     const [checkoutToken, setCheckoutToken] = useState({});
     const [activeStep, setActiverStep] = useState(0);
+    const [shipingData, setShipingData] = useState({});
 
     let Confirmation = () => {
         return (
@@ -27,7 +28,6 @@ export const Checkout = ({ cart }) => {
                     const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
                     setCheckoutToken(token);
                 } catch {
-                    // if (activeStep !== steps.length) history.push('/');
                 }
             };
 
@@ -35,9 +35,19 @@ export const Checkout = ({ cart }) => {
         }
     }, [cart]);
 
+    const nextStep = () => setActiverStep((prevActiveStep) => prevActiveStep + 1);
+    const prevStep = () => setActiverStep((prevActiveStep) => prevActiveStep - 1);
+
+    console.log(checkoutToken);
+
+    const next = (data) => {
+        nextStep();
+        setShipingData(data);
+    }
+
     const Form = () => activeStep === 0 ?
-        <AddressForm checkoutToken={checkoutToken} />
-        : <PaymentForm />;
+        <AddressForm checkoutToken={checkoutToken} next={next} />
+        : <PaymentForm shipingData={shipingData} checkoutToken={checkoutToken} prevStep={prevStep} />;
 
 
     return (

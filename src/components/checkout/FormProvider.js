@@ -1,17 +1,28 @@
 
 import React from 'react';
 import { Form, Button, Row, Container, Col } from 'react-bootstrap';
+import { useFormContext, Controller } from 'react-hook-form';
 
-function FormInput({ name, type, required, holder }) {
+function FormHandler({ name, label, required }) {
 
+    const { control } = useFormContext();
+    const isError = false;
     return (
-
         <Form.Group >
-            <Form.Label>{name}</Form.Label>
-            <Form.Control type={type} placeholder={holder} required={required} />
+            <Controller
+                as={Form.Control}
+                name={name}
+                control={control}
+                label={label}
+                fullWidth
+                required={required}
+                error={isError}
+            />
         </Form.Group>
 
     );
 }
 
-export default FormInput;
+export default FormHandler;
+
+
