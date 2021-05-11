@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { ListGroup, Badge, Row, Col } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 
 const Review = ({ checkoutToken }) => {
     return (
         <>
             <ListGroup variant="flush">
                 {checkoutToken.live.line_items.map(product =>
-                    <ListGroup.Item className={'py-1'}>{product.name}  <p style={{ color: "grey" }}>Quantity : {product.quantity}</p></ListGroup.Item>
+                    <ListGroup.Item className={'py-1 bold text-uppercase'}>{product.name} <br /> <p className={"fw-bold text-lowercase text-info bg-light d-inline-block"}>Quantity : {product.quantity}</p></ListGroup.Item>
                 )}
             </ListGroup>
 

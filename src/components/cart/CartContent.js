@@ -100,9 +100,6 @@ export const CartContent = ({
     );
   }
 
-  // if (!line_items) return <h1>Loading..</h1>;
-
-  console.log(line_items.length);
   return (
     <Container fluid>
       <h3 className={"my-2"}>Your Shopin Cart : </h3>
@@ -111,19 +108,19 @@ export const CartContent = ({
           <CartItems />
           <Row className={"my-4"}>
             <Col className={"text-center"} xs={12} lg={4}>
-              <h5 className={"bg-light p-2 d-inline-block"}>
+              <h5 className={"bg-light p-2 d-inline-block rounded-pill"}>
                 Total Items :<small> {total_items}</small>{" "}
               </h5>
             </Col>
             <Col className={"text-center"} xs={12} lg={4}>
-              <h5 className={"bg-light p-2 d-inline-block"}>
+              <h5 className={"bg-primary text-white p-2 d-inline-block rounded-pill"}>
                 Total Price :<small>{subtotal.formatted_with_code}</small>{" "}
               </h5>
             </Col>
 
             <Col className="text-center my-1" xs={12} lg={2}>
               <Link to={"/checkout"}>
-                <Button className="card-text" variant="info">
+                <Button className="card-text" variant="success">
                   Check Out
                 </Button>
               </Link>

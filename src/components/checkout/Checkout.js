@@ -68,7 +68,7 @@ export const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
             type: "cart",
           });
           setCheckoutToken(token);
-        } catch {}
+        } catch { }
       };
 
       generateToken();
@@ -99,9 +99,9 @@ export const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
     );
 
   return (
-    <Container fluid className={"my-4 "}>
+    <Container fluid className={"my-4"}>
       <Jumbotron
-        className={"bg-white shadow mx-auto text-sm-center  text-md-left"}
+        className={"bg-white shadow mx-auto text-sm-center  text-md-left py-2"}
       >
         <Row className={"justify-content-center"}>
           <Badge

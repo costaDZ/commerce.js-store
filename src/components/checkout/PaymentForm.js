@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Row, Container, Col } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Review from "./Review";
 import {
   Elements,
@@ -10,13 +10,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
-export const PaymentForm = ({
-  shipingData,
-  checkoutToken,
-  prevStep,
-  handleCaptureCheckout,
-  nextStep,
-}) => {
+export const PaymentForm = ({ shipingData, checkoutToken, prevStep, handleCaptureCheckout, nextStep, }) => {
   const handelSubmit = async (e, elements, stripe) => {
     e.preventDefault();
     if (!elements || !stripe) return;
@@ -62,7 +56,7 @@ export const PaymentForm = ({
   return (
     <>
       <Container>
-        <h4 className={"my-3"}>Order Summary :</h4>
+        <h6 className={"my-3"}>Order Summary :</h6>
         <Review checkoutToken={checkoutToken} />
         <br /> <br />
         <Elements stripe={stripePromise}>

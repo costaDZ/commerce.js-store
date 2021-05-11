@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { commerce } from "./components/lib/Commerce";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Nav, Products, CartContent, Checkout } from "./components";
+import { Spinner, Container } from "react-bootstrap";
+import { Nav, Products, CartContent, Checkout, Footer } from "./components";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -71,7 +72,13 @@ function App() {
   if (loading) {
     return (
       <>
-        <h1>Loading ...</h1>
+        <div
+          className={
+            "vh-100 d-flex justify-content-center align-items-center bg-light"
+          }
+        >
+          <Spinner animation="border" variant="primary" />
+        </div>
       </>
     );
   }
@@ -100,6 +107,7 @@ function App() {
           />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }
