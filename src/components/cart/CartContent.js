@@ -24,9 +24,9 @@ export const CartContent = ({
   function EmptyCart() {
     return (
       <Container className={"py-5"}>
-        <Jumbotron>
-          <h4>Hello, Dear!</h4>
-          <p>Your cart is empty right Now </p>
+        <Jumbotron className={"bg-warning"}>
+          <h4>Cart status !!! :</h4>
+          <p>Your cart is empty right Now you can return to buy you favorite phones </p>
           <Link to="/">
             <Button variant="primary">Return To Store</Button>
           </Link>
@@ -59,7 +59,7 @@ export const CartContent = ({
                       quantity :
                       <Button
                         variant="info"
-                        className="mx-2 fw-bold"
+                        className="mx-2 px-2 py-1 fw-bold fs-1"
                         onClick={() => updateCart(item.id, item.quantity + 1)}
                       >
                         +
@@ -67,7 +67,7 @@ export const CartContent = ({
                       <span className="fw-bold ">{item.quantity}</span>
                       <Button
                         variant="info"
-                        className="mx-2"
+                        className="mx-2 px-2 py-1 fw-bold fs-1"
                         onClick={() => updateCart(item.id, item.quantity - 1)}
                       >
                         -

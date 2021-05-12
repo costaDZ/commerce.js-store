@@ -1,12 +1,4 @@
 nav {
-    .cart-logo {
-        width: 54px;
-        height: 54px;
-        &:hover {
-            border-bottom: 2px solid;
-        }
-    }
-
     .cart-number {
         background: #007bff;
         color: white;
@@ -19,9 +11,13 @@ nav {
         align-items: center;
         position: absolute;
         bottom: 46px;
-        left: 47px;
+        left: 42px;
         font-weight: 700;
     }
+}
+.cart-icon:hover {
+    color: aqua !important;
+    transition: 0.3s !important;
 }
 
 .inline {
@@ -50,11 +46,8 @@ nav {
     font-size: 0.8em;
 }
 
-
 /*****************footer*********************/
 .footer-area {
     font-size: 15px;
     margin: 6em 0 0 0;
 }
-
-

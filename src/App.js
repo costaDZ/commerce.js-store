@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { commerce } from "./components/lib/Commerce";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Spinner, Container } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import { Nav, Products, CartContent, Checkout, Footer } from "./components";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [filterdProduct, setFilterdProduct] = useState([]);
+  const [cartBorder, setCartBorder] = useState('primary');
   const [cart, setCart] = useState({});
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
   const fetchProduct = async () => {
-    setProducts(await commerce.products.list());
+    let { data } = await commerce.products.list();
+    setProducts(data);
     setLoading(false);
   };
 
   const fetchCart = async () => {
     setCart(await commerce.cart.retrieve());
-    setLoading(false);
   };
 
   const addToCart = async (productId, quantity) => {
@@ -45,6 +47,21 @@ function App() {
     const newCart = await commerce.cart.refresh();
     setCart(newCart);
   };
+
+  const searchFilter = (target) => {
+    let newItems = products.filter(item => item.name.toLowerCase().slice(0, target.length) === target.toLowerCase());
+    setFilterdProduct(newItems);
+
+    if (target && newItems.length) {
+      setCartBorder("success");
+    } else if (target && !newItems.length) {
+      setCartBorder("danger");
+    } else {
+      setCartBorder("primary");
+    }
+  }
+
+
 
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
@@ -85,10 +102,20 @@ function App() {
 
   return (
     <Router className="App">
-      <Nav {...cart} />
+      <Nav
+        {...cart}
+        searchFilter={searchFilter}
+        cartBorder={cartBorder}
+      />
       <Switch>
         <Route exact path="/">
-          <Products products={products.data} addToCart={addToCart} />
+          <Products
+            loading={loading}
+
+            products={filterdProduct.length ? filterdProduct : products}
+            addToCart={addToCart}
+            cartBorder={cartBorder}
+          />
         </Route>
         <Route path="/cart">
           <CartContent
