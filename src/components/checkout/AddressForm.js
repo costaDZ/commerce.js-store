@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Col, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { commerce } from "../lib/Commerce";
 
 export const AddressForm = ({ checkoutToken, next }) => {
@@ -12,6 +12,9 @@ export const AddressForm = ({ checkoutToken, next }) => {
   const [shippingOption, setShippingOption] = useState("");
 
   const [formInfo, setFormInfo] = useState({});
+
+
+
   const contries = Object.entries(shippingCountries).map(([code, name]) => ({
     id: code,
     name: name,
@@ -75,6 +78,8 @@ export const AddressForm = ({ checkoutToken, next }) => {
     target(e.target.value);
     setFormInfo({ ...formInfo, [info]: e.target.value });
   };
+
+
 
   return (
     <>

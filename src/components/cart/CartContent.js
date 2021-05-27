@@ -11,7 +11,15 @@ import {
   Row,
   CardDeck,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+
+import { Link, useHistory } from "react-router-dom";
+
+// let history = useHistory();
+// if (!shippingCountries) {
+//   history.pushState('/');
+// }
+
+
 
 export const CartContent = ({
   line_items,
